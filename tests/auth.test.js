@@ -4,6 +4,8 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const authRouter = require('../routes/auth'); // Adjust the path as needed
+// Laster inn konfigurasjon
+dotenv.config({ path: './config/config.env' })
 
 // Setup express app and middleware for testing
 const app = express();
