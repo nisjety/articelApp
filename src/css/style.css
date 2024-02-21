@@ -1,0 +1,45 @@
+body {
+    background: rgb(255, 210, 154);
+    color: #333; /* Mørkere tekst for bedre kontrast */
+    
+    .container {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Legger til skygge for dybde */
+        background-color: #fff; /* Lys bakgrunn for skjemaet */
+    }
+
+    .public-articles ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .public-articles li {
+        margin: 10px 0;
+    }
+
+    /* Tilpasser <select> for kategori */
+.select-wrapper input.select-dropdown {
+    background-color: #f0f0f0; /* Endre bakgrunnsfarge */
+    border: 1px solid #cccccc; /* Legger til en kant */
+    border-radius: 5px; /* Runde hjørner */
+    height: 40px; /* Setter høyde */
+    line-height: 40px; /* Sentrerer teksten vertikalt */
+    color: #333333; /* Tekstfarge */
+}
+
+/* Stil for selve dropdown-menyen */
+.dropdown-content {
+    border-radius: 5px; /* Runde hjørner på dropdown */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Legger til skygge for dybdeeffekt */
+}
+
+/* Stil for valgtelementer i dropdown */
+.dropdown-content li>span {
+    color: #333333; /* Tekstfarge for elementene */
+}
+
+/* Hover-effekt for elementene i dropdown */
+.dropdown-content li:hover {
+    background-color: #eeeeee; /* Endre bakgrunnsfarge ved hover */
+}
+
+}

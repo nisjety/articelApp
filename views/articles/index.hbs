@@ -1,0 +1,28 @@
+<h1>Artikler</h1>
+<div class="row">
+    {{#each articles}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5>
+                
+                <p>Forfatter: {{author.displayName}}</p>
+                <p>Oppsummering: {{summary}}</p>
+                <p>Kategori: {{category}}</p>
+                <br>
+                {{#if author.image}}
+                <img src="{{author.image}}" alt="{{author.displayName}}" class="circle responsive-img">
+                {{/if}}
+                <a href="/articles/user/{{author._id}}" class="btn waves-effect waves-light blue darken-3">{{author.displayName}}</a>
+            </div>
+            <div class="card-action center-align">
+                <a href="/articles/{{_id}}" class="btn blue">Les mer</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p class="no-articles">Ingen artikler å finne.</p>
+    {{/each}}
+</div>

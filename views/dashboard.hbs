@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Artikkel Dashboard</h1>
+    <p>Velkommen, {{name}}!</p>
+    <a href="/articles/add" class="btn blue">Skriv ny artikkel</a>
+
+    {{#if articles.length}}
+        <table class="striped responsive-table">
+            <thead>
+                <tr>
+                    <th>Tittel</th>
+                    <th>Kategori</th> <!-- Added category column -->
+                    <th>Dato</th>
+                    <th>Status</th>
+                    <th>Handlinger</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each articles}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.category}}</td> 
+                        <td>{{this.createdAt}}</td>
+                        <td>{{this.status}}</td>
+                        <td>
+                            <a href="/articles/{{this._id}}" class="btn-small blue">Les mer</a>
+                            <a href="/articles/edit/{{this._id}}" class="btn-small yellow darken-2">Rediger</a>
+                            <form action="/articles/delete/{{this._id}}" method="POST" style="display: inline;">
+                                <button type="submit" class="btn-small red">Slett</button>
+                            </form>
+                            <form action="/articles/status/{{this._id}}" method="POST" style="display: inline;">
+                                <input type="hidden" name="newStatus" value="{{#if (eq this.status 'public')}}private{{else}}public{{/if}}">
+                                <button type="submit" class="btn-small {{#if (eq this.status 'public')}}orange{{else}}green{{/if}}">
+                                    {{#if (eq this.status 'public')}}Gjør Privat{{else}}Gjør Offentlig{{/if}}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>Du har ingen artikler ennå.</p>
+    {{/if}}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    });
+</script>
