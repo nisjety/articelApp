@@ -5,7 +5,7 @@
     "test": "jest",
     "start": "node server",
     "dev": "concurrently \"nodemon server.js\" \"parcel watch src/index.html --dist-dir public\"",
-    "build": "parcel build --dist-dir public"
+    "build": "parcel build src/index.html --dist-dir public"
   },
   "author": "",
   "license": "ISC",
