@@ -1,0 +1,20 @@
+For dette prosjektet har jeg jobbet med å utvikle en webapplikasjon med Express og Parcel. Målet med applikasjonen er å tilby en plattform der brukere kan lese, 
+legge ut og oppdatere artikler. På denne plattformen er det kun innloggede brukere som kan lese hele artiklene, mens de som ikke er innlogget kun kan se overskrifter. 
+Dette konseptet ligner på hvordan nyhetssider som VG fungerer. Jeg har også satt opp et system der redaktører, som er spesifikke brukere, har mulighet til å publisere artikler.
+
+Under utviklingen av prosjektet har jeg fulgt en strukturert tilnærming. Jeg startet med å sette opp prosjektstrukturen og serveren, og gikk deretter videre til å definere rest-operasjonene for artiklene. 
+Jeg integrerte MongoDB for datalagring og satte opp Passport.js med Google OAuth for brukerautentisering. 
+Videre implementerte jeg rollebasert tilgangskontroll for å håndtere ulike brukertyper og deres tilgang i applikasjonen.
+
+En av hovedfunksjonene jeg har jobbet med er å håndtere artikkelstatus (offentlig eller privat) og gi muligheten til å endre denne statusen fra brukerens dashbord. 
+Jeg brukte Handlebars som en malmotor for å generere HTML basert på serverdata, som inkluderte å lage visninger for artikkeloppføringer, artikkeldetaljer og brukerdashboards.
+
+For bedre å organisere applikasjonen delte jeg ruter i separate filer basert på funksjonalitet. Dette gjorde koden mer oversiktlig og enklere å vedlikeholde.
+
+Selv om applikasjonen fungerer bra, oppdaget jeg noen feil mens jeg testet med Jest. Ikke alle testene gikk som forventet, selv om applikasjonen i seg selv ikke viste noen problemer med funksjonaliteten. 
+Dette understreker viktigheten av grundig testing og feilsøking i utviklingsprosessen.
+
+Fikk til slutt lastet opp applikasjonen til Heroku. Dette betyr at applikasjonen nå er tilgjengelig på nett og kan brukes av andre.
+
+Link til heroku:
+https://article-app-c8400d3b3222.herokuapp.com/
