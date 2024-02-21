@@ -2,27 +2,43 @@ const request = require('supertest');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const authRouter = require('../routes/auth'); // Ensure this path matches your project structure
+const { Strategy } = require('passport-strategy');
+const authRouter = require('../routes/auth'); // Adjust the path as needed
 
-// Setup express app for testing
+// Define the MockStrategy class
+class MockStrategy extends Strategy {
+  constructor() {
+    super();
+    this.name = 'mock'; // Give a name to the strategy
+  }
+
+  authenticate(req, options) {
+    const user = { id: '123', displayName: 'Test User' }; // Simulated user object
+    this.success(user);
+  }
+}
+
+// Initialize express app
 const app = express();
+
+// Middleware setup
 app.use(express.urlencoded({ extended: false }));
-app.use(session({ secret: 'test_secret', resave: false, saveUninitialized: true }));
+app.use(session({
+  secret: 'test secret',
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Mock Passport Google OAuth strategy
-passport.use(new GoogleStrategy({
-  clientID: 'YOUR_TEST_CLIENT_ID',
-  clientSecret: 'YOUR_TEST_CLIENT_SECRET',
-  callbackURL: "/auth/google/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  // Mock user profile callback
-  cb(null, { id: '123', displayName: 'Test User' });
-}));
+// Use the mock strategy
+passport.use(new MockStrategy());
 
+// Serialize and deserialize user (adjust according to your needs)
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser((id, done) => done(null, { id: '123', displayName: 'Test User' }));
+
+// Use the auth router
 app.use('/auth', authRouter);
 
 // Start server for testing
@@ -38,17 +54,16 @@ afterAll((done) => {
 describe('Auth Router Tests', () => {
   test('GET /auth/google should initiate Google authentication', async () => {
     const response = await request(server).get('/auth/google');
-    // This might still redirect to Google, mocking the full OAuth flow would require intercepting this call.
     expect(response.status).toBe(302);
-    // Ensure your test environment can handle redirects or mock this part
+    expect(response.headers.location).toContain('accounts.google.com');
   });
 
   test('GET /auth/google/callback should handle authentication callback', async () => {
-    // Simulate a successful authentication callback
+    // Adjust this test to simulate a more realistic scenario
     const response = await request(server).get('/auth/google/callback?code=mockCode');
+    // Assuming the callback leads to a dashboard or similar page upon successful authentication
     expect(response.status).toBe(302);
-    // Adjust expectations based on your application's flow after successful authentication
-    expect(response.headers.location).toEqual(expect.stringContaining('/dashboard'));
+    expect(response.headers.location).toEqual(expect.stringContaining('/dashboard')); // Adjust based on your app's flow
   });
 
   test('GET /auth/logout should log out the user and redirect', async () => {
@@ -56,5 +71,4 @@ describe('Auth Router Tests', () => {
     expect(response.status).toBe(302);
     expect(response.headers.location).toEqual('/');
   });
-
 });

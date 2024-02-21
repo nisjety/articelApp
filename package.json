@@ -4,8 +4,8 @@
   "scripts": {
     "test": "jest",
     "start": "node server",
-    "dev": "concurrently \"nodemon server.js\" \"parcel watch src/index.html --dist-dir public\"",
-    "build": "parcel build src/index.html --dist-dir public"
+    "dev": "concurrently \"nodemon server.js\" \"parcel watch src/assets/index.js --dist-dir public/assets\"",
+    "build-assets": "parcel build src/assets/index.js --dist-dir public/assets"
   },
   "author": "",
   "license": "ISC",
