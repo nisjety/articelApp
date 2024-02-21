@@ -1,33 +1,37 @@
 <h1>{{article.title}}</h1>
 <div class="container">
-    <div class="card">
-        <div class="card-content">
-            <!-- Display the author's image if it exists -->
-            {{#if article.authorId.image}}
-            <div class="card-image center-align">
-                <img src="{{article.authorId.image}}" alt="{{article.authorId.displayName}}" class="circle responsive-img">
-            </div>
-            {{/if}}
-            <div class="card-content center-align">
-                <h5>{{article.title}}</h5>
-                <p>Forfatter: {{article.authorId.displayName}}</p>
-                <p>Publisert: {{article.createdAt}}</p>
-                <p>Status: {{article.status}}</p>
-                <p>Kategori: {{article.category}}</p>
-                <div class="summary">
-                    <h2>Sammendrag</h2>
-                    <p>{{article.summary}}</p>
-                </div>
-                <div class="content">
-                    <h2>Innhold</h2>
-                    <p>{{article.content}}</p>
-                </div>
-            </div>
-            <div class="card-action center-align">
-                <a href="/articles" class="btn blue">Tilbake til Artikler</a>
-                <!-- Corrected the link for returning to the dashboard -->
-                <a href="/dashboard" class="btn blue">Tilbake til Dashboard</a>
-            </div>
+  <div class="card">
+    <div class="card-content">
+      <!-- Display the author's image if it exists -->
+      {{#if article.authorId.image}}
+        <div class="card-image center-align">
+          <img
+            src="{{article.authorId.image}}"
+            alt="{{article.authorId.displayName}}"
+            class="circle responsive-img"
+          />
         </div>
+      {{/if}}
+      <div class="card-content center-align">
+        <h5>{{article.title}}</h5>
+        <p>Forfatter: {{article.authorId.displayName}}</p>
+        <p>Publisert: {{article.createdAt}}</p>
+        <p>Status: {{article.status}}</p>
+        <p>Kategori: {{article.category}}</p>
+        <div class="summary">
+          <h2>Sammendrag</h2>
+          <p>{{article.summary}}</p>
+        </div>
+        <div class="content">
+          <h2>Innhold</h2>
+          <p>{{article.content}}</p>
+        </div>
+      </div>
+      <div class="card-action center-align">
+        <a href="/articles" class="btn blue">Tilbake til Artikler</a>
+        <!-- Corrected the link for returning to the dashboard -->
+        <a href="/dashboard" class="btn blue">Tilbake til Dashboard</a>
+      </div>
     </div>
+  </div>
 </div>

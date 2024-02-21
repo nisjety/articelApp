@@ -1,13 +1,21 @@
 {{#if userIsAdmin}}
-    <div class="fixed-action-btn">
-        <a href="/downgrade-to-user" class="btn-floating btn-medium waves-effect waves-light red" onclick="return confirm('Bruker');">
-            <i class="fas fa-user-minus"></i>
-        </a>
-    </div>
+  <div class="fixed-action-btn">
+    <a
+      href="/downgrade-to-user"
+      class="btn-floating btn-medium waves-effect waves-light red"
+      onclick="return confirm('Bruker');"
+    >
+      <i class="fas fa-user-minus"></i>
+    </a>
+  </div>
 {{else}}
-    <div class="fixed-action-btn">
-        <a href="/upgrade-to-admin" class="btn-floating btn-medium waves-effect waves-light green" onclick="return confirm('Redaktør');">
-            <i class="fas fa-user-plus"></i>
-        </a>
-    </div>
+  <div class="fixed-action-btn">
+    <a
+      href="/upgrade-to-admin"
+      class="btn-floating btn-medium waves-effect waves-light green"
+      onclick="return confirm('Redaktør');"
+    >
+      <i class="fas fa-user-plus"></i>
+    </a>
+  </div>
 {{/if}}
