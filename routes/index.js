@@ -6,9 +6,24 @@ const Article = require('../models/Article');
 const User = require('../models/User');
 
 // Login page
-router.get('/', (req, res) => {
-    res.render('login', { layout: 'login' });
+
+// Combined route for displaying the login page along with public articles
+router.get('/', async (req, res) => {
+    try {
+        const articles = await Article.find({ status: 'public' })
+            .sort({ createdAt: 'desc' })
+            .lean();
+
+        res.render('login', { 
+            layout: 'login', 
+            articles: articles
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
 });
+
 
 // Dashboard
 router.get('/dashboard', ensureAuth, async (req, res) => {

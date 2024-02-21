@@ -4,14 +4,15 @@
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
+                <!-- Hvis du har et bilde for artikkelen, kan du inkludere det her -->
             </div>
             <div class="card-content center-align">
                 <h5>{{title}}</h5>
-                
+                <!-- Anta at du har tilgang til forfatterens navn og bilde gjennom en 'author' sub-dokument eller referanse -->
                 <p>Forfatter: {{author.displayName}}</p>
                 <p>Oppsummering: {{summary}}</p>
-                <p>Kategori: {{category}}</p>
                 <br>
+
                 {{#if author.image}}
                 <img src="{{author.image}}" alt="{{author.displayName}}" class="circle responsive-img">
                 {{/if}}

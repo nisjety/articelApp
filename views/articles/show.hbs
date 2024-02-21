@@ -3,14 +3,14 @@
     <div class="card">
         <div class="card-content">
             <!-- Viser forfatterens bilde hvis det finnes -->
-            {{#if article.author.image}}
+            {{#if article.authorId.image}}
             <div class="card-image center-align">
-                <img src="{{article.author.image}}" alt="{{article.author.displayName}}" class="circle responsive-img">
+                <img src="{{article.authorId.image}}" alt="{{article.authorId.displayName}}" class="circle responsive-img">
             </div>
             {{/if}}
             <div class="card-content center-align">
                 <h5>{{article.title}}</h5>
-                <p>Forfatter: {{article.author.user}}</p>
+                <p>Forfatter: {{article.authorId.user}}</p>
                 <p>Publisert: {{article.createdAt}}</p>
                 <p>Status: {{article.status}}</p>
                 <p>Kategori:{{article.category}}</p>
@@ -30,7 +30,6 @@
         </div>
     </div>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     });
