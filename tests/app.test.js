@@ -1,5 +1,6 @@
 // Assuming you're using CommonJS syntax based on the context of your project
 const request = require('supertest');
+const path = require('path')
 const { app, server } = require('../app'); // Adjust the import according to your project structure
 
 describe('App Test', () => {

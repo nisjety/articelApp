@@ -3,20 +3,15 @@
     {{#each articles}}
     <div class="col s12 m4">
         <div class="card">
-            <div class="card-image">
-                <!-- Hvis du har et bilde for artikkelen, kan du inkludere det her -->
-            </div>
             <div class="card-content center-align">
                 <h5>{{title}}</h5>
-                <!-- Anta at du har tilgang til forfatterens navn og bilde gjennom en 'author' sub-dokument eller referanse -->
-                <p>Forfatter: {{author.displayName}}</p>
+                <p>Forfatter: {{authorId.displayName}}</p>
                 <p>Oppsummering: {{summary}}</p>
-                <br>
-
-                {{#if author.image}}
-                <img src="{{author.image}}" alt="{{author.displayName}}" class="circle responsive-img">
+                <p>Kategori: {{category}}</p>
+                {{#if authorId.image}}
+                <img src="{{authorId.image}}" alt="{{authorId.displayName}}" class="circle responsive-img">
                 {{/if}}
-                <a href="/articles/user/{{author._id}}" class="btn waves-effect waves-light blue darken-3">{{author.displayName}}</a>
+                <a href="/articles/user/{{authorId._id}}" class="btn waves-effect waves-light blue darken-3">{{authorId.displayName}}</a>
             </div>
             <div class="card-action center-align">
                 <a href="/articles/{{_id}}" class="btn blue">Les mer</a>

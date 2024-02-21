@@ -1,6 +1,6 @@
 const http = require('http');
 const { Server } = require('socket.io');
-const app = require('./app'); // Import the app module
+const app = require('./app'); // Import the app module, ensure it's correctly set up in app.js
 
 const PORT = process.env.PORT || 3000;
 
@@ -31,8 +31,8 @@ io.on('connection', (socket) => {
     });
 });
 
-// Starter serveren
-server.listen(PORT, () => { // Use the server.listen function instead of the app.listen function
+// Start the server
+server.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
 
@@ -41,5 +41,5 @@ server.on('error', (err) => {
   console.error('Server error:', err);
 });
 
-// Export the server and io modules
+// Export the server and io modules for potential use elsewhere
 module.exports = { server, io };

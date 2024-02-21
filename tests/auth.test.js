@@ -1,8 +1,9 @@
-const request = require('supertest');
+const request = require('supertest')
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const authRouter = require('../router/auth'); // Adjust the path as needed
+const authRouter = require('../routes/auth'); // Adjust the path as needed
 
 // Setup express app and middleware for testing
 const app = express();

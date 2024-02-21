@@ -1,7 +1,8 @@
 const request = require('supertest');
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const articleRouter = require('../routers/article');
+const articleRouter = require('../routes/articles');
 
 // Mock middleware for authentication and authorization
 const mockEnsureAuth = (req, res, next) => {

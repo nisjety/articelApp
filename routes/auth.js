@@ -18,17 +18,16 @@ router.get('/google/callback',
 
   // logout
 // /auth/logout
-router.get('/logout', (req, res) => {
+router.get('/logout', (req, res, next) => { 
   req.logout(function(err) {
     if (err) {
-      // Håndter feilen hvis noe gikk galt under utloggingen
       console.error(err);
-      return next(err);
+      return next(err); // 
     }
-    // Omdiriger brukeren etter vellykket utlogging
     res.redirect('/');
   });
 });
+
 
 
 module.exports = router;
